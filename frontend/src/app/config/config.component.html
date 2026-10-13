@@ -1,0 +1,28 @@
+<div class="page" *ngIf="config">
+  <h2>Configuration</h2>
+  <p class="msg" *ngIf="message">{{ message }}</p>
+
+  <h3>Job Preferences</h3>
+  <label>Preferred Titles (comma-separated)</label>
+  <input [(ngModel)]="titlesText" style="width:100%" />
+
+  <label>Skills (comma-separated)</label>
+  <input [(ngModel)]="skillsText" style="width:100%" />
+
+  <h3>Job Sites</h3>
+  <table class="data">
+    <thead>
+      <tr><th>Enabled</th><th>Name</th><th>Provider</th><th>Max Results</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of config.sites">
+        <td><input type="checkbox" [checked]="s.enabled" (change)="toggleSite(s)" /></td>
+        <td>{{ s.name }}</td>
+        <td>{{ s.provider }}</td>
+        <td><input type="number" [(ngModel)]="s.maxResults" style="width:70px" /></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)="save()">Save Configuration</button>
+</div>

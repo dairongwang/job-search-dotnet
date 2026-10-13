@@ -1,0 +1,5 @@
+.page { padding: 1rem; }
+.toolbar { margin-bottom: 1rem; }
+table.data { width: 100%; border-collapse: collapse; }
+table.data th, table.data td { border-bottom: 1px solid #ddd; padding: 0.5rem; text-align: left; }
+button.danger { background: #dc3545; color: white; border: none; padding: 0.3rem 0.6rem; border-radius: 4px; cursor: pointer; }

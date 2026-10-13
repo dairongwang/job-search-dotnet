@@ -1,0 +1,29 @@
+<div class="page">
+  <h2>Dashboard</h2>
+  <div *ngIf="loading">Loading...</div>
+  <div class="cards" *ngIf="stats">
+    <div class="card">
+      <div class="card-title">Total Jobs</div>
+      <div class="card-value">{{ stats.totalJobs }}</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Contacts</div>
+      <div class="card-value">{{ stats.contacts }}</div>
+    </div>
+    <div class="card">
+      <div class="card-title">Outreach</div>
+      <div class="card-value">{{ stats.outreach }}</div>
+    </div>
+    <div class="card warn" *ngIf="stats.overdueFollowUps > 0">
+      <div class="card-title">Overdue Follow-ups</div>
+      <div class="card-value">{{ stats.overdueFollowUps }}</div>
+    </div>
+  </div>
+  <h3>Pipeline</h3>
+  <table *ngIf="stats?.byStatus?.length">
+    <tr *ngFor="let s of stats!.byStatus">
+      <td>{{ s.status }}</td>
+      <td><strong>{{ s.count }}</strong></td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,43 @@
+<div class="page">
+  <h2>Tracked Jobs</h2>
+  <div class="toolbar">
+    <label>Status:
+      <select [(ngModel)]="filterStatus" (change)="load()">
+        <option value="">All</option>
+        <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
+      </select>
+    </label>
+  </div>
+  <table class="data">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Organization</th>
+        <th>Location</th>
+        <th>Status</th>
+        <th>Priority</th>
+        <th>Next Action</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let j of jobs">
+        <td>
+          <a *ngIf="j.url" [href]="j.url" target="_blank">{{ j.title }}</a>
+          <span *ngIf="!j.url">{{ j.title }}</span>
+        </td>
+        <td>{{ j.organization }}</td>
+        <td>{{ j.location }}</td>
+        <td>
+          <select [ngModel]="j.status" (ngModelChange)="updateStatus(j, $event)">
+            <option *ngFor="let s of statuses" [value]="s">{{ s }}</option>
+          </select>
+        </td>
+        <td>{{ j.priority }}</td>
+        <td>{{ j.nextAction }} <small *ngIf="j.nextActionDate">({{ j.nextActionDate }})</small></td>
+        <td><button class="danger" (click)="delete(j)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="jobs.length === 0">No jobs yet. Use the Search page to find and save roles.</p>
+</div>

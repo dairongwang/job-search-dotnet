@@ -1,0 +1,11 @@
+.page { padding: 1rem; }
+.search-bar { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+.search-bar input { flex: 1; padding: 0.5rem; }
+button { padding: 0.5rem 1rem; cursor: pointer; }
+.result { border-bottom: 1px solid #eee; padding: 0.75rem 0; }
+.result-header { display: flex; gap: 0.75rem; align-items: baseline; }
+.source { color: #666; font-size: 0.85rem; }
+.score { color: #0d6efd; font-size: 0.8rem; }
+.meta { color: #555; font-size: 0.9rem; margin: 0.25rem 0; }
+.actions { display: flex; gap: 0.5rem; }
+.msg { color: #198754; }

@@ -1,0 +1,25 @@
+<div class="page">
+  <h2>Search Job Listings</h2>
+  <div class="search-bar">
+    <input [(ngModel)]="keyword" placeholder="Keyword (or leave blank to use configured titles)" (keyup.enter)="search()" />
+    <button (click)="search()" [disabled]="loading">{{ loading ? 'Searching...' : 'Search' }}</button>
+  </div>
+  <p class="msg" *ngIf="message">{{ message }}</p>
+  <div class="results" *ngIf="results.length">
+    <div class="result" *ngFor="let r of results">
+      <div class="result-header">
+        <strong>{{ r.title }}</strong>
+        <span class="source">{{ r.source }}</span>
+        <span class="score" *ngIf="r.score > 1">score {{ r.score | number:'1.0-1' }}</span>
+      </div>
+      <div class="meta">
+        {{ r.organization }} · {{ r.location }} · {{ r.workplace }}
+        <span *ngIf="r.salaryText"> · {{ r.salaryText }}</span>
+      </div>
+      <div class="actions">
+        <a *ngIf="r.url" [href]="r.url" target="_blank">View</a>
+        <button (click)="save(r)">Save to Tracker</button>
+      </div>
+    </div>
+  </div>
+</div>
